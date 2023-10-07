@@ -9,9 +9,6 @@ st.markdown('''
 # Stock Price App
 Shown are the stock price data for query companies!
 
-**Credits**
-- App built by [Chanin Nantasenamat](https://medium.com/@chanin.nantasenamat) (aka [Data Professor](http://youtube.com/dataprofessor))
-- Built in `Python` using `streamlit`,`yfinance`, `cufflinks`, `pandas` and `datetime`
 ''')
 st.write('---')
 
@@ -27,14 +24,10 @@ tickerData = yf.Ticker(tickerSymbol) # Get ticker data
 tickerDf = tickerData.history(period='1d', start=start_date, end=end_date) #get the historical prices for this ticker
 
 # Ticker information
-string_logo = '<img src=%s>' % tickerData.info['logo_url']
-st.markdown(string_logo, unsafe_allow_html=True)
+# string_logo = '<img src=%s>' % tickerData.info['logo_url']
+# st.markdown(string_logo, unsafe_allow_html=True)
 
-string_name = tickerData.info['longName']
-st.header('**%s**' % string_name)
 
-string_summary = tickerData.info['longBusinessSummary']
-st.info(string_summary)
 
 # Ticker data
 st.header('**Ticker data**')
@@ -50,3 +43,8 @@ st.plotly_chart(fig)
 ####
 #st.write('---')
 #st.write(tickerData.info)
+string_name = tickerData.info['longName']
+st.header('**%s**' % string_name)
+
+string_summary = tickerData.info['longBusinessSummary']
+st.info(string_summary)
